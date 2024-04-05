@@ -1,13 +1,8 @@
 import unittest
 from r_numeral_functions import _convert_to_int_list
 from r_numeral_functions import check_input
+from r_numeral_functions import rn_to_decimal
 
-
-class test_convert_to_list(unittest.TestCase):
-
-    def test_convert_to_list(self):
-        int_list = _convert_to_int_list("IVXLCDM")
-        self.assertEqual([0, 1, 2, 3, 4, 5, 6], int_list)
 
 class test_check_input(unittest.TestCase):
 
@@ -52,6 +47,38 @@ class test_check_input(unittest.TestCase):
         message: str = check_input("IX")[1]
         self.assertEqual(success, True)
         self.assertEqual(message, "")
+
+class test_rn_to_decimal(unittest.TestCase):
+
+    def test_1(self):
+        self.assertEqual(rn_to_decimal("III"), 3)
+    def test_2(self):
+        self.assertEqual(rn_to_decimal("XIV"), 14)
+    def test_3(self):
+        self.assertEqual(rn_to_decimal("XLII"), 42)
+    def test_4(self):
+        self.assertEqual(rn_to_decimal("XCIX"), 99)
+    def test_5(self):
+        self.assertEqual(rn_to_decimal("CXXIII"), 123)
+    def test_6(self):
+        self.assertEqual(rn_to_decimal("CDXLIV"), 444)
+    def test_7(self):
+        self.assertEqual(rn_to_decimal("DCCCLXXXVIII"), 888)
+    def test_8(self):
+        self.assertEqual(rn_to_decimal("CMXCIX"), 999)
+    def test_9(self):
+        self.assertEqual(rn_to_decimal("MMMCMXCIX"), 3999)
+    def test_single_I(self):
+        self.assertEqual(rn_to_decimal("I"), 1)
+    def test_single_M(self):
+        self.assertEqual(rn_to_decimal("M"), 1000)
+
+class test_convert_to_list(unittest.TestCase):
+
+    def test_convert_to_list(self):
+        int_list = _convert_to_int_list("IVXLCDM")
+        self.assertEqual([0, 1, 2, 3, 4, 5, 6], int_list)
+
 
 if __name__ == '__main__':
     unittest.main()
