@@ -1,0 +1,9 @@
+def check_input(r_numeral) -> tuple:
+    ...
+
+def rn_to_decimal(r_numeral) -> int:
+    ...
+
+# Expects a valid Roman numeral uppercase string
+def _convert_to_int_list(r_numeral) -> list[int]:
+    ...
