@@ -16,3 +16,8 @@ OIT Code Challenge: Decimal to Roman Numeral Converter
 * Having an int list also has the added bonus of easily determining between roman numerals with a leading number 1 (I, X, C, M) and a leading number 5 (V, L, D). This is done by checking if the int list value is odd or even.
 
 ## Handwritten Notes
+
+## Misc.
+Time spent:
+Runtime/executable version: Python
+No additional dependencies

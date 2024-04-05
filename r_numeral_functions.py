@@ -46,10 +46,37 @@ def check_input(r_numeral) -> tuple:
 
     return True, ""
 
-def rn_to_decimal(r_numeral) -> int:
-    ...
-
 # Expects a valid Roman numeral uppercase string
+# Returns the decimal equivalent of the Roman numeral
+def rn_to_decimal(r_numeral) -> int:
+
+    i_list: list[int] = _convert_to_int_list(r_numeral.upper())
+    result_list: list[int] = []
+
+    # Convert i_list to corresponding decimal values
+    for i in range(len(i_list)):
+        if i_list[i] == 0:
+            result_list.append(1)
+        if i_list[i] == 1:
+            result_list.append(5)
+        if i_list[i] == 2:
+            result_list.append(10)
+        if i_list[i] == 3:
+            result_list.append(50)
+        if i_list[i] == 4:
+            result_list.append(100)
+        if i_list[i] == 5:
+            result_list.append(500)
+        if i_list[i] == 6:
+            result_list.append(1000)
+
+        # Handle subtractive notation
+        if i < (len(i_list) - 1) and i_list[i] < i_list[i + 1]:
+            result_list[i] *= -1
+
+    return sum(result_list)
+
+# Expects an uppercase string including only valid Roman numeral characters
 # Returns a list of integers representing the Roman numeral
 def _convert_to_int_list(r_numeral) -> list[int]:
     decimal_list = []
