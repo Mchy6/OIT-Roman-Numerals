@@ -24,12 +24,22 @@ def check_input(r_numeral) -> tuple:
         else:
             repeated = 1
             
+        # Characters I, X, C, and M
         if i_list[i] % 2 == 0:
+            # Check subtractive notation is being used properly (ex: IL is not valid)
+            if i_list[i] + 2 < i_list[i + 1]:
+                return False, r_numeral_upper[i + 1] + " cannot be preceded by " + r_numeral_upper[i]
+
             # Check if current character is repeated more than three times
             if repeated > 3:
                 return False, r_numeral_upper[i] + " cannot be repeated more than three times."
             
+        # Characters V, L, and D
         else:
+            # Check subtractive notation is not being used with these characters as subtrahends
+            if i_list[i] < i_list[i + 1]:
+                return False, r_numeral_upper[i + 1] + " cannot be preceded by " + r_numeral_upper[i]
+            
             # Check if current character is repeated more than once
             if repeated > 1:
                 return False, r_numeral_upper[i] + " cannot be repeated more than once."
@@ -40,6 +50,7 @@ def rn_to_decimal(r_numeral) -> int:
     ...
 
 # Expects a valid Roman numeral uppercase string
+# Returns a list of integers representing the Roman numeral
 def _convert_to_int_list(r_numeral) -> list[int]:
     decimal_list = []
     for char in r_numeral:
