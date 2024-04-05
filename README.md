@@ -19,6 +19,6 @@ OIT Code Challenge: Decimal to Roman Numeral Converter
 ![Handwritten notes](handwritten_notes.jpg)
 
 ## Misc.
-Time spent: ~3 hours
-Runtime/executable version: Python
-No additional dependencies
+Time spent: ~3 hours\
+Runtime/executable version: Python\
+No additional dependencies\
